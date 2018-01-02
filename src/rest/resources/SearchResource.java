@@ -31,7 +31,7 @@ public class SearchResource {
 	@GET
 	@Produces({MediaType.TEXT_XML, MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Item[] search(@DefaultValue("")@QueryParam("filter") String filter, @DefaultValue("")@QueryParam("count") String count) throws ApiException {
-		System.out.println("--> RecommendationResource request...");
+		System.out.println("--> SearchResource request...");
 		System.out.println("--> URI = "+uriInfo);
 		System.out.println("--> request = "+request);
 		Item[] items = SearchItems.search(filter, Integer.parseInt(count));

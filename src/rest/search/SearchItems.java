@@ -18,5 +18,13 @@ public class SearchItems {
 				);
 		return result;
 	}
+	
+	public static Item[] search(String filter) throws ApiException {
+		Item [] result = client.send(new ListItems()
+				  .setFilter(filter)
+				  .setReturnProperties(true)
+				);
+		return result;
+	}
 
 }
