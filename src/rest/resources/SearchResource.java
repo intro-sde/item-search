@@ -1,5 +1,7 @@
 package rest.resources;
 
+import java.io.IOException;
+
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.ws.rs.DefaultValue;
@@ -7,11 +9,15 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
+import org.json.JSONArray;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.recombee.api_client.bindings.Item;
 import com.recombee.api_client.exceptions.ApiException;
 
@@ -27,14 +33,21 @@ public class SearchResource {
 	@Context
 	Request request;
 	
-	
+	public static String format(String jsonString) throws IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		Object json = mapper.readValue(jsonString, Object.class);
+		String prettyJson = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json);
+
+		return prettyJson;
+	}
 	@GET
-	@Produces({MediaType.TEXT_XML, MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	public Item[] search(@DefaultValue("")@QueryParam("filter") String filter, @DefaultValue("")@QueryParam("count") String count) throws ApiException {
+	@Produces({MediaType.APPLICATION_JSON})
+	public String search(@DefaultValue("")@QueryParam("keyword") String keyword) throws ApiException, IOException {
 		System.out.println("--> SearchResource request...");
 		System.out.println("--> URI = "+uriInfo);
 		System.out.println("--> request = "+request);
-		Item[] items = SearchItems.search(filter, Integer.parseInt(count));
+		String items = SearchItems.search(keyword);
+		//Entity entity = Entity.json(items);
 		return items;
 	}
 	
