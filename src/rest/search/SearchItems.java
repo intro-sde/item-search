@@ -39,6 +39,7 @@ public class SearchItems {
 	      return prettyJson;
 	  }
 	 private static URI getBaseURI() {
+		 //TODO:update URL
 		 return UriBuilder.fromUri(
 				 "http://localhost:5900/").build();
 	 }
@@ -55,6 +56,7 @@ public class SearchItems {
 	private static String conertKWToFilter(String keyword) {
 		keyword = "\""+keyword+"\"";
 		String filter = keyword + " in 'name' or " + keyword + " in 'city' or "+ keyword +" in 'type' or " +keyword + " in 'topic' or " +keyword+ " in 'from' or "+keyword+" in 'to'";
+		//"+keyword+" in 'address' or " + keyword+" in 'rating'"
 		System.out.println(filter);
 		return filter;
 	}

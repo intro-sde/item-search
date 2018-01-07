@@ -1,6 +1,11 @@
 # Item search service
-RESTful service for searching items in database.
+RESTful service for searching items based on keywords in database.
 
-TODO: Change from direct Recombee access to connect with database service.
+The following method for the http://{base_url}/search endpoint is available in this service:
+- @GET | [keyword] | Returns list of items that contains the given keyword. 
 
-localhost:5900/search?filter="itemId=001i"&count=1
+TODO:
+update SearchItems.java with restaurant columns
+
+Reference:
+Recombee API (version 1.6.0), Available at: https://docs.recombee.com/api.html.
