@@ -41,7 +41,7 @@ public class SearchItems {
 	 private static URI getBaseURI() {
 		 //TODO:update URL
 		 return UriBuilder.fromUri(
-				 "http://localhost:5900/").build();
+				 "https://sde-storage-ws.herokuapp.com/").build();
 	 }
 	
 	public static String search(String keyword) throws IOException {
