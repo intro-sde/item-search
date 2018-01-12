@@ -47,7 +47,6 @@ public class SearchResource {
 		System.out.println("--> URI = "+uriInfo);
 		System.out.println("--> request = "+request);
 		String items = SearchItems.search(keyword);
-		//Entity entity = Entity.json(items);
 		return items;
 	}
 	
