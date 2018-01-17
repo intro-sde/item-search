@@ -51,6 +51,15 @@ public class SearchItems {
 		return json;
 		 
 	}
+	
+	public static String searchWithCount(String keyword, String count) throws IOException {	
+		WebTarget service = config();
+		Response resp = service.path("/rdb/items").queryParam("filter", SearchItems.conertQueryToFilter(keyword)).queryParam("count", count).request().accept(MediaType.APPLICATION_JSON).header("Content-type","application/json").get();
+		String response = resp.readEntity(String.class);
+		String json = format(response);
+		return json;
+		 
+	}
 
 	private static String conertQueryToFilter(String query) {
 		String[] parts = query.split(" ");

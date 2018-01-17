@@ -42,11 +42,16 @@ public class SearchResource {
 	}
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
-	public String search(@DefaultValue("")@QueryParam("keyword") String keyword) throws ApiException, IOException {
+	public String search(@DefaultValue("")@QueryParam("keyword") String keyword, @QueryParam("count") String count) throws ApiException, IOException {
 		System.out.println("--> SearchResource request...");
 		System.out.println("--> URI = "+uriInfo);
 		System.out.println("--> request = "+request);
-		String items = SearchItems.search(keyword);
+		String items;
+		if (count==null) {
+			items = SearchItems.search(keyword);
+		}else {
+			items = SearchItems.searchWithCount(keyword, count);
+		}
 		return items;
 	}
 	
