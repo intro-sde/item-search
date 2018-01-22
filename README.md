@@ -7,4 +7,4 @@ The following method for the https://sde-item-search-ws.herokuapp.com/search end
 For example https://sde-item-search-ws.herokuapp.com/search?keyword=Toscana Cycling&count=3 gives back 3 activities with topic=Cycling and city=Toscana.
 
 Reference:
-Recombee API (version 1.6.0), Available at: https://docs.recombee.com/api.html.
+Recombee API (version 1.6.0), Available at: https://docs.recombee.com/api.html
